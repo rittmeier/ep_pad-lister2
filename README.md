@@ -1,48 +1,73 @@
 # ep_pad-lister2
 
-Continued development of [ep_pad-lister](https://github.com/ktt-ol/ep_pad-lister), whose upstream repository has been archived.
+A pad overview plugin for Etherpad 3.x. Adds a link to the Etherpad
+home page and provides a separate page listing pads by their last edit.
 
-A plugin for Etherpad-lite that shows a list of all pads sorted by last edit date.
+This project continues development of
+[ep_pad-lister](https://github.com/ktt-ol/ep_pad-lister), whose upstream
+repository has been archived.
 
+## Features
 
-# Features
+- Lists pads with their revision number and last edit date.
+- Displays custom pad titles from
+  [ep_set_title_on_pad](https://github.com/ether/ep_set_title_on_pad),
+  with compatibility fixed for Etherpad 3.x.
+- Excludes pads without any changes and pads whose names start with `private_`.
+- Includes translations for English, German, Spanish, French, Italian,
+  Dutch, Polish, Brazilian Portuguese, Turkish and Ukrainian.
+- Supports Colibris dark mode on the home page link box and the pad overview.
 
-* List all pads, shows revision and last edit date
-* Ignores pads without any changes
-* Ignores private pads (= pads starting with `private_`)
-* Supports [ep\_set\_title\_on\_pad](https://github.com/JohnMcLear/ep_set_title_on_pad)
+## Requirements
 
-# Screenshots
+Developed for Etherpad 3.x and manually tested with Etherpad 3.3.19
+using the Colibris skin.
 
-**New pad**
-![New Pad](https://ktt-ol.github.io/ep_pad-lister/images/new_pad.jpg)
+## Installation
 
-**Pad list**
-![Pad_List](https://ktt-ol.github.io/ep_pad-lister/images/pad_list.jpg)
+From your Etherpad directory, run:
 
-
-# Install
-
-This plugin requires Etherpad 1.8 or newer since version 1.2.0.
-For older Etherpad installations, use an earlier version of this plugin.
-
-The integration with ep_set_title_on_pad has been updated to use
-Etherpad's Promise-based database API and has been tested with
-Etherpad 3.3.15. Compatibility of this change with older Etherpad
-versions has not been verified.
-
-## Etherpad 3.x
-
-Install the plugin from your Etherpad directory:
-
-```shell
-pnpm run plugins install ep_pad-lister
+```sh
+pnpm run plugins install ep_pad-lister2
 ```
 
-## Older Etherpad versions
+Restart Etherpad after installation. Open its home page and follow
+the Padlist link, or visit `/pad-lister`.
 
-Install the plugin from your Etherpad directory:
+### Installing from a local checkout
 
-```shell
-npm install ep_pad-lister
+For development or testing, install a local checkout from your
+Etherpad directory:
+
+```sh
+pnpm run plugins install --path /path/to/ep_pad-lister2
 ```
+
+Restart Etherpad after installation.
+
+## Migrating from ep_pad-lister
+
+Replace `ep_pad-lister` with `ep_pad-lister2` in your plugin installation
+or container build. Install one version of the plugin at a time.
+
+The `/pad-lister` URL and the `private_` prefix are retained.
+No pad data migration is required, and the plugin needs no dedicated
+configuration block in `settings.json`.
+
+## Appearance and dark mode
+
+The pad overview loads the active Etherpad skin's home page stylesheet.
+Its appearance therefore depends on the selected skin. Dark mode has
+been tested with Colibris on Etherpad 3.3.19.
+
+Dark mode follows Etherpad's global `enableDarkMode` setting in
+`settings.json`, which is enabled by default. The plugin requires
+no separate configuration.
+
+When enabled, the overview follows the browser's color scheme and
+updates without reloading. A light-mode preference saved in a pad
+on the same origin takes precedence.
+
+## Credits
+
+Based on ep_pad-lister by Holger Cremer and its contributors.

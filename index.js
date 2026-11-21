@@ -34,6 +34,8 @@ exports.registerRoute = function (hook_name, args) {
       const render_args = {
         PRIVATE_PAD_PREFIX: PRIVATE_PAD_PREFIX,
         pads: pads,
+        skinName: settings.skinName,
+        enableDarkMode: settings.enableDarkMode === true,
         cookiePrefixJson: JSON.stringify(settings.cookie?.prefix || '').replace(/</g, '\\u003c')
       };
       res.send(eejs.require('ep_pad-lister2/templates/list.html', render_args));

@@ -1,21 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html<% if (enableDarkMode) { %> data-auto-dark<% } %>>
 <head>
     <title data-l10n-id="ep_pad_lister.title">Padlist</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <link href="/pad-lister/static/bootstrap.min.css" rel="stylesheet">
     <link rel="localizations" type="application/l10n+json" href="/locales.json">
+    <% if (enableDarkMode) { %>
+    <script>
+      (() => {
+        // Apply the saved light-mode preference before loading the skin.
+        const updateAutoDark = () => {
+          let useSystemPreference = true;
+          try {
+            useSystemPreference = localStorage.getItem('ep_darkMode') !== 'false';
+          } catch {
+            // Follow the system preference when storage is unavailable.
+          }
+          document.documentElement.toggleAttribute('data-auto-dark', useSystemPreference);
+        };
+        updateAutoDark();
+        window.addEventListener('pageshow', updateAutoDark);
+        window.addEventListener('storage', (event) => {
+          if (event.key === 'ep_darkMode' || event.key === null) updateAutoDark();
+        });
+      })();
+    </script>
+    <% } %>
+    <link href="./static/skins/<%= encodeURIComponent(skinName) %>/index.css" rel="stylesheet">
     <style type="text/css">
+        /* Keep the list layout while using the active home page skin. */
         body {
+            display: block;
             font-size: 16px;
         }
-        code {
-           color: #c7254e;
+        .jumbotron h1 {
+            margin: 20px 0 10px;
+        }
+        .jumbotron,
+        footer {
+            background-color: var(--home-surface, #eeeeee);
+            color: inherit;
         }
         footer {
-            background-color: #eeeeee;
             padding: 10px;
+        }
+        code {
+            color: var(--home-text, #c7254e);
+            background-color: var(--home-background, #f9f2f4);
+        }
+        .table > thead > tr > th,
+        .table > tbody > tr > td,
+        .table > tbody > tr > th {
+            border-color: var(--muted-border, #dddddd);
+        }
+        .table-striped > tbody > tr:nth-child(odd) > td,
+        .table-striped > tbody > tr:nth-child(odd) > th {
+            background-color: var(--home-surface, #f9f9f9);
+        }
+        .table-hover > tbody > tr:hover > td,
+        .table-hover > tbody > tr:hover > th {
+            background-color: var(--muted-background, #f5f5f5);
+        }
+        .table a {
+            text-decoration: underline;
+        }
+        a:focus-visible {
+            outline: 2px solid var(--ep-color, #428bca);
+            outline-offset: 2px;
         }
     </style>
 </head>

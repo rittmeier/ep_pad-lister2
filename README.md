@@ -1,5 +1,7 @@
 # ep_pad-lister2
 
+[![npm version](https://img.shields.io/npm/v/ep_pad-lister2)](https://www.npmjs.com/package/ep_pad-lister2)
+
 A pad overview plugin for Etherpad 3.x. Adds a link to the Etherpad
 home page and provides a separate page listing pads by their last edit.
 

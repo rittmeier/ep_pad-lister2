@@ -1,4 +1,6 @@
-# ep_pad-lister
+# ep_pad-lister2
+
+Continued development of [ep_pad-lister](https://github.com/ktt-ol/ep_pad-lister), whose upstream repository has been archived.
 
 A plugin for Etherpad-lite that shows a list of all pads sorted by last edit date.
 

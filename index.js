@@ -12,7 +12,7 @@ exports.eejsBlock_indexWrapper = function (hook_name, args, cb) {
   const render_args = {
     PRIVATE_PAD_PREFIX: PRIVATE_PAD_PREFIX
   };
-  args.content = args.content + eejs.require("ep_pad-lister/templates/linkToList.ejs", render_args);
+  args.content = args.content + eejs.require("ep_pad-lister2/templates/linkToList.ejs", render_args);
   return cb();
 };
 
@@ -36,7 +36,7 @@ exports.registerRoute = function (hook_name, args) {
         pads: pads,
         cookiePrefixJson: JSON.stringify(settings.cookie?.prefix || '').replace(/</g, '\\u003c')
       };
-      res.send(eejs.require('ep_pad-lister/templates/list.html', render_args));
+      res.send(eejs.require('ep_pad-lister2/templates/list.html', render_args));
     });
   });
 };

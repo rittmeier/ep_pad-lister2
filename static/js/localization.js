@@ -99,7 +99,7 @@
     }
   } catch (error) {
     // If localization fails, keep the English text from the template.
-    console.warn('ep_pad-lister: localization failed', error);
+    console.warn('ep_pad-lister2: localization failed', error);
   }
 })();
 

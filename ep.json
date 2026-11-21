@@ -1,10 +1,10 @@
 {
   "parts": [
     {
-      "name": "ep_pad-lister",
+      "name": "ep_pad-lister2",
       "hooks": {
-        "expressCreateServer" : "ep_pad-lister/index:registerRoute",
-        "eejsBlock_indexWrapper": "ep_pad-lister/index"
+        "expressCreateServer" : "ep_pad-lister2/index:registerRoute",
+        "eejsBlock_indexWrapper": "ep_pad-lister2/index"
       }
     }
   ]

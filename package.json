@@ -1,11 +1,12 @@
 {
   "name": "ep_pad-lister2",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Pad overview for Etherpad 3.x with custom titles, translations and Colibris dark mode support.",
   "author": {
     "name": "Florian Rittmeier",
     "url": "https://github.com/rittmeier"
   },
+  "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
     "dateformat": "1.0.6-1.2.3"
